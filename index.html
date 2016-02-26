@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Dinner planner</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="myStyle.css">
+
+    </head>
+    <body>
+
+        <div class="container-fluid" id="page_head">
+            <div class="row bg-info">
+                <div class="col-md-12">
+                    <h1>HOMELETTE</h1>
+
+                    <h4>From the best chefs in the world directly to your kitchen</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid hidden" id="page_body">
+            <div class="row" id="screen">
+                <!-- VIEW1 --> 
+                <div class="col-md-12" id="view1">
+                    <div class="row padd"><br></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>A Home Dinner Service</h3>
+
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                                cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                                est laborum.</p>
+
+
+                            <p>start quickly</p>
+                            <button class="btn btn-default" id="view1CreateNewDinnerBtn" type="button">Create
+                                New Dinner</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW2 -->
+                <div class="col-md-2 text-center" id="view2">
+                    <div>
+                        <h4>My Dinner</h4>
+                    </div>
+                    <div class="container-fluid">
+                        Number of guests: <span id="view2NumberOfGuestsSpan"></span>
+                    </div>
+
+                    <div>
+                        <button class="btn" id="view2MinusGuestBtn"><span class="glyphicon glyphicon-minus"></span></button> <button class="btn" id="view2PlusGuestBtn"><span class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                    <div class="container-fluid">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Dish name</th>
+
+                                    <th>Cost (SEK)</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="View2DinnerTableBody">
+                                <tr>
+                                    <td class="dishName">Pending</td>
+
+                                    <td class="cost">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <button class="btn btn-default" id="view2ConfirmDinnerBtn" type="button">Confim Dinner</button>
+                    </div>
+                </div>
+
+                <!-- VIEW3 -->
+                <div class="col-md-10" id="view3">
+                    <div class="row bg-info" id="searchPanel">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="view3SearchInput">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" id="view3SearchBtn" type="button">Search</button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <form role="form">
+                                <div class="form-group">
+                                    <select class="form-control" id="view3MenuTypeSel">
+                                        <option>
+                                            starter
+                                        </option>
+
+                                        <option>
+                                            main dish
+                                        </option>
+
+                                        <option>
+                                            dessert
+                                        </option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="row" id="view3DishThumbNailRow">
+                        Dishes here
+                    </div>
+                </div>
+
+                <!-- VIEW4 -->
+                <div class="col-md-10" id="view4">
+                    <div class="col-md-6">
+                        <h3><span id="view4DishNameSpan"></span></h3>
+                        <img class="img-rounded" id="view4LargeFoodImg"
+                             src="images/bakedbrie.jpg" width="304">
+
+                        <p><span id="view4DescSpan">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                non proident, sunt in culpa qui officia deserunt mollit anim id est
+                                laborum.</span></p>
+                        <button class="btn btn-default" id="view4BackToSelectDishBtn" type="button">Back
+                            To Select Dish</button>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Amount</th>
+
+                                        <th>Ingredient</th>
+
+                                        <th>Cost (SEK)</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="view4RecipieTableBody">
+                                    <tr>
+                                        <td class="amount">0</td>
+
+                                        <td class="ingredient">...</td>
+
+                                        <td class="cost">0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-default" id="view4ConfirmDishBtn" type="button">Confirm
+                                Dish</button>&nbsp;<b>TOTAL: <span id="view4DishTotalspan"></span> SEK</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW7 -->
+            <div class="row bg-info text-center" id="view7">
+                <div class="col-md-4">
+                    <h4>My Dinner: <span id="view7NumberOfGuests"></span> people</h4>
+                </div>
+                <div class="col-md-4 col-md-offset-4">
+                        <button class="btn btn-default" id="view7backToEditDinnerBtn" type="button">Back To
+                            Edit Dinner</button>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- VIEW5 -->
+                <div class="col-md-12" id="view5">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="container" id="view5ImageCol">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3" id="view5TotalCostCol">
+                            <h3>Total: <span id="view5TotalCostSpan"></span> SEK</h3>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row text-center">
+                        <button class="btn btn-default" id="view5PrintRecipieBtn" type="button">Print
+                            Recipie</button>
+                    </div>
+                </div>
+
+                <!-- VIEW6 -->
+                <div class="col-md-12" id="view6">
+                    <div class="container-fluid" id="view6ImgPrepRow">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+        <!-- The application JavaScript code -->
+        <script src="js/app.js"></script>
+        <script src="js/model/dinnerModel.js"></script>
+        <script src="js/view/view1.js"></script>
+        <script src="js/view/view2.js"></script>
+        <script src="js/view/view3.js"></script>
+        <script src="js/view/view4.js"></script>
+        <script src="js/view/view5.js"></script>
+        <script src="js/view/view6.js"></script>
+        <script src="js/view/view7.js"></script>
+        <script src="js/controller/controller1.js"></script>
+        <script src="js/controller/controller2.js"></script>
+        <script src="js/controller/controller3.js"></script>
+        <script src="js/controller/controller4.js"></script>
+        <script src="js/controller/controller5.js"></script>
+        <script src="js/controller/controller7.js"></script>
+    </body>
+</html>

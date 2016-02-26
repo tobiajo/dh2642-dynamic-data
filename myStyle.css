@@ -1,0 +1,35 @@
+#page_head h1,h4 {
+    display: inline-block;
+}
+
+.bg-info {
+    background-color: #ffdb4d;
+}
+
+.btn {
+    background-color: #ff9900;
+    font-weight: bold
+}
+
+.hidden {
+    visibility: hidden;
+    display: none;
+}
+
+.padd {
+    height: 100px;
+}
+
+#view2 {
+    border-right: black solid 2px;    
+    height: 480px;
+}
+
+#searchPanel {
+    border-bottom: black solid 2px;
+}
+
+#view5TotalCostCol {
+    border-left: black solid 2px;
+    height: 250px;
+}
