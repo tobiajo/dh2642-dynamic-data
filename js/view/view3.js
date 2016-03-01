@@ -4,8 +4,11 @@ var View3 = function (container, model) {
     this.searchBtn = container.find($("#view3SearchBtn"));
     this.menuTypeSel = container.find($("#view3MenuTypeSel"));
 
-    this.reDrawView = function (type, filter) {
-        var dishes = model.getAllDishes(type, filter);
+    this.update = function(dishes) {
+        this.reDrawView(dishes);
+    };
+
+    this.reDrawView = function (dishes) {
         var htmlString = "";
         for (var i = 0; i < dishes.length; i++) {
             htmlString += "<div class=\"col-md-3\"><h4>" + dishes[i].name
@@ -16,9 +19,10 @@ var View3 = function (container, model) {
                     + "</p></div>";
         }
         this.dishThumbNailRow.html(htmlString);
-    }
+    };
+
+    model.addObserver(this);
     
     //init
-    this.reDrawView(this.menuTypeSel.find("option:selected").val(), this.searchInput.val());
+    //this.reDrawView(this.menuTypeSel.find("option:selected").val(), this.searchInput.val());
 }
-

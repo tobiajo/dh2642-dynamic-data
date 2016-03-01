@@ -25,7 +25,7 @@ $(function () {
     //Init controllers
     var controller1 = new Controller1(view1);
     var controller2 = new Controller2(model, view2);
-    var controller3 = new Controller3(view3, view4);
+    var controller3 = new Controller3(view3, view4, model);
     var controller4 = new Controller4(model, view4);
     var controller5 = new Controller5(view5);
     var controller7 = new Controller7(view7);

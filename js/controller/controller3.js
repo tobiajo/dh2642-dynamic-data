@@ -1,4 +1,4 @@
-var Controller3 = function (view3, view4) {
+var Controller3 = function (view3, view4, model) {
 
     view3.menuTypeSel.on("change", function () {
         view3.reDrawView($(this).find("option:selected").val(), view3.searchInput.val());
@@ -19,4 +19,6 @@ var Controller3 = function (view3, view4) {
             $("#view4").show();
         }
     });
+
+    model.getAllDishes();
 }

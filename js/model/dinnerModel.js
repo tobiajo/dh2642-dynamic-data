@@ -8,22 +8,22 @@ var DinnerModel = function () {
 	this.apiKey = "8vtk7KykflO5IzB96kb0mpot0sU40096";
     this.numberOfGuests = 0;
     this.menu = [];
-    this.observers = [];
+    var observers = [];
 
     this.addObserver = function (obs) {
-       	this.observers.push(obs);
+       	observers.push(obs);
     }
 
-    this.notifyObservers = function (obj) {
-       	for (var i = 0; i < this.observers.length; i++) {
-         	this.observers[i].update(obj);
+    var notifyObservers = function (obj) {
+       	for (var i = 0; i < observers.length; i++) {
+         	observers[i].update(obj);
         }
     }
 
     this.setNumberOfGuests = function (num) {
         if (num >= 0) {
             this.numberOfGuests = num;
-            this.notifyObservers("GUESTS");
+            notifyObservers("GUESTS");
         }
     }
 
@@ -97,7 +97,7 @@ var DinnerModel = function () {
         } else {
             this.menu[1] = dish;
         }
-        this.notifyObservers("MENU");
+        notifyObservers("MENU");
     }
 
     //Removes dish from menu
@@ -111,7 +111,7 @@ var DinnerModel = function () {
         }
         if (this.menu[i] == dish) {
             this.menu[i] = null;
-            this.notifyObservers("MENU");
+            notifyObservers("MENU");
         }
     }
 
@@ -134,12 +134,10 @@ var DinnerModel = function () {
             dataType: 'json',
             cache: false,
             url: url,
-            success: function (data) {
-                console.log(data);
-            }
+            success: allDishesAsync
         });
 
-        return $(dishes).filter(function (index, dish) {
+        /*return $(dishes).filter(function (index, dish) {
             var found = true;
             if (filter) {
                 found = false;
@@ -154,7 +152,49 @@ var DinnerModel = function () {
                 }
             }
             return dish.type == type && found;
-        });
+        });*/
+    }
+
+    function allDishesAsync(apiData) {
+        var allDishes = [];
+        console.log(apiData);
+        for (var i = 0; i < 10; i++) {
+            var dish = {
+                'id': 1,
+                'name': 'French toast',
+                'type': 'starter',
+                'image': 'toast.jpg',
+                'description': "In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.",
+                'ingredients': [{
+                        'name': 'eggs',
+                        'quantity': 0.5,
+                        'unit': '',
+                        'price': 10
+                    }, {
+                        'name': 'milk',
+                        'quantity': 30,
+                        'unit': 'ml',
+                        'price': 6
+                    }, {
+                        'name': 'brown sugar',
+                        'quantity': 7,
+                        'unit': 'g',
+                        'price': 1
+                    }, {
+                        'name': 'ground nutmeg',
+                        'quantity': 0.5,
+                        'unit': 'g',
+                        'price': 12
+                    }, {
+                        'name': 'white bread',
+                        'quantity': 2,
+                        'unit': 'slices',
+                        'price': 2
+                    }]
+            };
+            allDishes.push(dish);
+        }
+        notifyObservers(allDishes);
     }
 
     //function that returns a dish of specific ID
