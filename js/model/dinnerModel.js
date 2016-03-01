@@ -5,7 +5,7 @@ var DinnerModel = function () {
     // and selected dinner options for dinner menu
 	this.apiUrl = "http://api.bigoven.com/recipes?pg=1&rpp=25";
 	this.apiDishUrl = "http://api.bigoven.com/recipe/";
-	this.apiKey = "8vtk7KykflO5IzB96kb0mpot0sU40096";
+	this.apiKey = "18f3cT02U9f6yRl3OKDpP8NA537kxYKu";
     this.numberOfGuests = 0;
     this.menu = [];
     var observers = [];
@@ -120,12 +120,10 @@ var DinnerModel = function () {
     //if you don't pass any filter all the dishes will be returned
     this.getAllDishes = function (type, filter) {
 
-        var url = this.apiUrl;
-		if (type != "") {
-			url +=  "&any_kw=" + type;
+        var url = this.apiUrl + "&api_key=" + this.apiKey;
+		if (typeof type === "string") {
+			url += "&any_kw=" + type;
 		}
-		url += "&title_kw=" + filter 
-        + "&api_key="+ this.apiKey;
 
 		console.log(url);
 
@@ -159,38 +157,12 @@ var DinnerModel = function () {
         var allDishes = [];
         console.log(apiData);
         for (var i = 0; i < 10; i++) {
+            var r = apiData.Results[i];
             var dish = {
-                'id': 1,
-                'name': 'French toast',
-                'type': 'starter',
-                'image': 'toast.jpg',
-                'description': "In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.",
-                'ingredients': [{
-                        'name': 'eggs',
-                        'quantity': 0.5,
-                        'unit': '',
-                        'price': 10
-                    }, {
-                        'name': 'milk',
-                        'quantity': 30,
-                        'unit': 'ml',
-                        'price': 6
-                    }, {
-                        'name': 'brown sugar',
-                        'quantity': 7,
-                        'unit': 'g',
-                        'price': 1
-                    }, {
-                        'name': 'ground nutmeg',
-                        'quantity': 0.5,
-                        'unit': 'g',
-                        'price': 12
-                    }, {
-                        'name': 'white bread',
-                        'quantity': 2,
-                        'unit': 'slices',
-                        'price': 2
-                    }]
+                'id': r.RecipeID,
+                'name': r.Title,
+                'type': r.Category,
+                'image': r.ImageURL
             };
             allDishes.push(dish);
         }
