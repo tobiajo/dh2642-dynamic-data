@@ -122,7 +122,8 @@ var DinnerModel = function () {
 
         var url = this.apiUrl;
 		if (type != "") {
-			url +=  "&any_kw=" + type;
+			"&any_kw="
+			url +=  + type;
 		}
 		url += "&title_kw=" + filter 
         + "&api_key="+ this.apiKey;

@@ -4,9 +4,9 @@ var Controller3 = function (view3, view4) {
         view3.reDrawView($(this).find("option:selected").val(), view3.searchInput.val());
     });
 
-//    view3.searchInput.keyup(function () {
-//        view3.reDrawView(view3.menuTypeSel.find("option:selected").val(), view3.searchInput.val());
-//    });
+    view3.searchInput.keyup(function () {
+        view3.reDrawView(view3.menuTypeSel.find("option:selected").val(), view3.searchInput.val());
+    });
 
     view3.searchBtn.click(function () {
         view3.reDrawView(view3.menuTypeSel.find("option:selected").val(), view3.searchInput.val());
