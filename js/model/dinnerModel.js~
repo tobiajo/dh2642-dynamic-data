@@ -127,7 +127,7 @@ var DinnerModel = function () {
             url: url,
             success: allDishesAsync,
 			error: function() {
-				notifyObservers("ERROR","getDishes");		
+				notifyObservers("ERROR");		
 			}
         });
 
@@ -194,7 +194,7 @@ var DinnerModel = function () {
 				notifyObservers(dish, "getDish");
         },
 		error: function() {
-			notifyObservers("ERROR","getDish");		
+			notifyObservers("ERROR");		
 		}
     	});	
 	}

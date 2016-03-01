@@ -13,7 +13,7 @@ var View2 = function (container, model) {
         var htmlString = "";
         for (var i = 0; i < menu.length; i++) {
             htmlString += "<tr> <td>" + menu[i].name + "</td> <td>"
-                    + model.getDishPrice(menu[i]) * model.getNumberOfGuests()
+                    + model.getDishPrice(menu[i].id) * model.getNumberOfGuests()
                     + "</td> </tr>";
         }
         htmlString += "<tr> <td><b>Total price:</b></td><td><b>"

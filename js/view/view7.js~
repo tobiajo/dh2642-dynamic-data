@@ -8,7 +8,7 @@ this.backToEditDinnerBtn = container.find($("#view7backToEditDinnerBtn"));
         this.numberOfGuests.html(model.getNumberOfGuests());
     }
 
-    this.update = function (obj, ident) {
+    this.update = function (obj) {
         if (obj == "GUESTS") {
             this.reDrawView();
         }

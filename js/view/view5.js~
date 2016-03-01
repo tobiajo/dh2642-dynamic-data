@@ -10,7 +10,7 @@ var View5 = function (container, model) {
         var htmlString = "";
         for (var i = 0; i < menu.length; i++) {
             htmlString += "<div class=\"col-md-3\"><h4>" + menu[i].name
-                    + "</h4><img src=\"" + menu[i].image
+                    + "</h4><img src=\"images\/" + menu[i].image
                     + "\" class=\"img - thumbnail\" width=\"200\">"
                     + "<p>Cost: " + model.getDishPrice(menu[i]) * model.getNumberOfGuests() + "</p></div>";
         }

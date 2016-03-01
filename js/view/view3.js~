@@ -7,7 +7,7 @@ var View3 = function (container, model) {
     this.update = function(dishes, ident) {
 		if (ident === "getDishes") {
 			if(dishes === "ERROR") {
-				console.log("ERROR " + ident);			
+				console.log("ERROR");			
 			} else {
         		this.reDrawView(dishes);
 			}

@@ -29,11 +29,7 @@ var View4 = function (container, model) {
 
 	this.update = function(obj,ident) {
 		if (ident === "getDish") {
-			if ( obj === "ERROR") {
-				console.log(obj + " " + ident);
-			} else {
-				this.reDrawView(obj);
-			}
+			this.reDrawView(obj);
 		}
 	}
 }

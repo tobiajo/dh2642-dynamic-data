@@ -1,5 +1,6 @@
 var Controller4 = function (model, view) {
     view.confirmDishBtn.click(function () {
+		console.log(view.dish);
         model.addDishToMenu(view.dish);
     })
 
