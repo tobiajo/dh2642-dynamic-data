@@ -8,6 +8,8 @@ var View3 = function (container, model) {
 		if (ident === "getDishes") {
 			if(dishes === "ERROR") {
 				console.log("ERROR " + ident);			
+                $("#loadView").hide();
+                $("#errorView").show();
 			} else {
         		this.reDrawView(dishes);
 			}
@@ -15,6 +17,8 @@ var View3 = function (container, model) {
     };
 
     this.reDrawView = function (dishes) {
+        $("#loadView").hide();
+        $("#view3").show();
         var htmlString = "";
         for (var i = 0; i < dishes.length; i++) {
             htmlString += "<div class=\"col-md-3\"><h4>" + dishes[i].name

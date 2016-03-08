@@ -11,6 +11,8 @@ var View4 = function (container, model) {
 
 
     this.reDrawView = function (dish) {
+        $("#loadView").hide();
+        $("#view4").show();
         this.dish = dish;
         this.dishNameSpan.html(dish.name);
         this.largeFoodImg.attr("src", dish.image);
@@ -31,6 +33,8 @@ var View4 = function (container, model) {
 		if (ident === "getDish") {
 			if ( obj === "ERROR") {
 				console.log(obj + " " + ident);
+                $("#loadView").hide();
+                $("#errorView").show();
 			} else {
 				this.reDrawView(obj);
 			}
