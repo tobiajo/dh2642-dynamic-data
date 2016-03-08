@@ -7,7 +7,7 @@ var DinnerModel = function () {
 	this.apiDishUrl = "http://api.bigoven.com/recipe/";
 	this.apiKey = "8vtk7KykflO5IzB96kb0mpot0sU40096";
     this.numberOfGuests = 0;
-    this.menu = [];
+    var menu = [];
     var observers = [];
 
     this.addObserver = function (obs) {
@@ -27,41 +27,34 @@ var DinnerModel = function () {
         }
     }
 
-    // should return 
     this.getNumberOfGuests = function () {
         return this.numberOfGuests;
     }
 
     //Returns the dish that is on the menu for selected type 
-    this.getSelectedDish = function (type) {
-        var dishOut;
-        if (type == "starter") {
-            dishOut = menu[0];
-        } else if (type == "dessert") {
-            dishOut = menu[2];
-        } else {
-            dishOut = menu[1];
-        }
-        return dishOut;
-    }
+    //this.getSelectedDish = function (type) {
+        //var dishOut;
+        //if (type == "starter") {
+            //dishOut = menu[0];
+        //} else if (type == "dessert") {
+            //dishOut = menu[2];
+        //} else {
+            //dishOut = menu[1];
+        //}
+        //return dishOut;
+    //}
 
     //Returns all the dishes on the menu.
     this.getFullMenu = function () {
-        var menuOut = [];
-        for (var i = 0; i < this.menu.length; i++) {
-            if (this.menu[i] != null) {
-                menuOut.push(this.menu[i]);
-            }
-        }
-        return menuOut;
+        return menu;
     }
 
     //Returns all ingredients for all the dishes on the menu.
     this.getAllIngredients = function () {
         var ingredientsOut = [];
-        for (var i = 0; i < this.menu.length; i++) {
-            if (this.menu[i] != null) {
-                ingredientsOut = ingredientsOut.concat(this.menu[i].ingredients);
+        for (var i = 0; i < menu.length; i++) {
+            if (menu[i] != null) {
+                ingredientsOut = ingredientsOut.concat(menu[i].ingredients);
             }
         }
         return ingredientsOut;
@@ -89,24 +82,24 @@ var DinnerModel = function () {
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
     //it is removed from the menu and the new one added.
     this.addDishToMenu = function (dish) {
-		this.menu.push(dish);
+		menu.push(dish);
         notifyObservers("MENU");
     }
 
     //Removes dish from menu
-    this.removeDishFromMenu = function (id) {
-        var dish = this.getDish(id);
-        var i = 1;
-        if (dish.type == "starter") {
-            i = 0;
-        } else if (dish.type == "dessert") {
-            i = 2;
-        }
-        if (this.menu[i] == dish) {
-            this.menu[i] = null;
-            notifyObservers("MENU");
-        }
-    }
+    //this.removeDishFromMenu = function (id) {
+        //var dish = this.getDish(id);
+        //var i = 1;
+        //if (dish.type == "starter") {
+            //i = 0;
+        //} else if (dish.type == "dessert") {
+            //i = 2;
+        //}
+        //if (this.menu[i] == dish) {
+            //this.menu[i] = null;
+            //notifyObservers("MENU");
+        //}
+    //}
 
     //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
     //you can use the filter argument to filter out the dish by name or ingredient (use for search)
