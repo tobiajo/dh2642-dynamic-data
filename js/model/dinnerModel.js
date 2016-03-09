@@ -31,19 +31,6 @@ var DinnerModel = function () {
         return this.numberOfGuests;
     }
 
-    //Returns the dish that is on the menu for selected type 
-    //this.getSelectedDish = function (type) {
-        //var dishOut;
-        //if (type == "starter") {
-            //dishOut = menu[0];
-        //} else if (type == "dessert") {
-            //dishOut = menu[2];
-        //} else {
-            //dishOut = menu[1];
-        //}
-        //return dishOut;
-    //}
-
     //Returns all the dishes on the menu.
     this.getFullMenu = function () {
         return menu;
@@ -61,7 +48,6 @@ var DinnerModel = function () {
     }
 
     this.getDishPrice = function (dish) {
-		console.log(dish.ingredients);
         var priceOut = 0;
         for (var i = 0; i < dish.ingredients.length; i++) {
             priceOut += dish.ingredients[i].price;
@@ -86,21 +72,6 @@ var DinnerModel = function () {
         notifyObservers("MENU");
     }
 
-    //Removes dish from menu
-    //this.removeDishFromMenu = function (id) {
-        //var dish = this.getDish(id);
-        //var i = 1;
-        //if (dish.type == "starter") {
-            //i = 0;
-        //} else if (dish.type == "dessert") {
-            //i = 2;
-        //}
-        //if (this.menu[i] == dish) {
-            //this.menu[i] = null;
-            //notifyObservers("MENU");
-        //}
-    //}
-
     //function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
     //you can use the filter argument to filter out the dish by name or ingredient (use for search)
     //if you don't pass any filter all the dishes will be returned
@@ -110,8 +81,6 @@ var DinnerModel = function () {
 		if (typeof type === "string") {
 			url += "&any_kw=" + type;
 		}
-
-		console.log(url);
 
         $.ajax({
             type: "GET",
@@ -123,23 +92,6 @@ var DinnerModel = function () {
 				notifyObservers("ERROR","getDishes");		
 			}
         });
-
-        /*return $(dishes).filter(function (index, dish) {
-            var found = true;
-            if (filter) {
-                found = false;
-                $.each(dish.ingredients, function (index, ingredient) {
-                    if (ingredient.name.indexOf(filter) != -1) {
-                        found = true;
-                    }
-                });
-                if (dish.name.indexOf(filter) != -1)
-                {
-                    found = true;
-                }
-            }
-            return dish.type == type && found;
-        });*/
     }
 
     function allDishesAsync(apiData) {
